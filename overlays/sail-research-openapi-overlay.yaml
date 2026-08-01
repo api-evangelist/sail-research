@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Sail API
+  version: 1.0.0
+extends: openapi/sail-research-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 4
+      x-apievangelist-notes: >-
+        OpenAI- and Anthropic-compatible inference API for long-horizon agents.
+        Idempotency-Key supported on all POST operations; cursor pagination on
+        /batches; completion webhooks via request metadata.
+  - target: $.info
+    update:
+      x-api-evangelist-artifacts:
+        authentication: authentication/sail-research-authentication.yml
+        conventions: conventions/sail-research-conventions.yml
+        errors: errors/sail-research-problem-types.yml
+        lifecycle: lifecycle/sail-research-lifecycle.yml
+        webhooks: asyncapi/sail-research-webhooks.yml
+        packages: packages/sail-research-packages.yml
+        mcp: mcp/sail-research-mcp.yml
+        cli: cli/sail-research-cli.yml

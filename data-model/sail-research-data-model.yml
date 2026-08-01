@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sail-research-openapi-original.json
+entities:
+  - name: Model
+    id_field: id
+    operations: [listModels]
+    notes: "A servable open-source model (e.g. zai-org/GLM-5.2-FP8)."
+  - name: Response
+    id_field: response_id
+    operations: [createResponse, getResponse]
+    notes: "OpenAI Responses API task; supports background=true (202) and streaming."
+  - name: ChatCompletion
+    operations: [createChatCompletion]
+    notes: "OpenAI Chat Completions; may run against a model and completion window."
+  - name: Message
+    operations: [createMessage, countMessageTokens]
+    notes: "Anthropic-compatible message."
+  - name: Batch
+    id_field: batch_id
+    operations: [createBatch, listBatches, getBatch, getBatchRequestResult]
+    notes: "Container of asynchronous requests processed together."
+  - name: BatchRequestResult
+    id_field: custom_id
+    operations: [getBatchRequestResult]
+relationships:
+  - from: Batch
+    to: BatchRequestResult
+    kind: has_many
+    via: custom_id
+  - from: Response
+    to: Model
+    kind: belongs_to
+    via: model
+  - from: ChatCompletion
+    to: Model
+    kind: belongs_to
+    via: model
+  - from: Message
+    to: Model
+    kind: belongs_to
+    via: model

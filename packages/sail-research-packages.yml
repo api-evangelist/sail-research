@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sailresearch.com/reference/python-sdk.md
+packages:
+  - language: python
+    registry: pypi
+    name: sail
+    url: https://pypi.org/project/sail/
+    install: pip install sail
+    official: true
+    notes: "First-party Python SDK; also installs the `sail` CLI. Shares one engine with the TypeScript and Rust SDKs."
+  - language: typescript
+    registry: npm
+    name: "@sailresearch/sdk"
+    url: https://www.npmjs.com/package/@sailresearch/sdk
+    install: npm install @sailresearch/sdk
+    official: true
+    notes: "Official TypeScript SDK for Sail sandboxes (sailboxes). Node 22+ and Bun."
+  - language: rust
+    registry: crates.io
+    name: sail-rs
+    url: https://crates.io/crates/sail-rs
+    docs: https://docs.rs/sail-rs
+    install: cargo add sail-rs
+    official: true
+    notes: "Official Rust SDK. Source: docs.sailresearch.com/reference/rust-sdk (crates.io API returned 403 to automated probe; presence asserted from docs)."
+  - language: shell
+    registry: script
+    name: sail (CLI)
+    url: https://cli.sailresearch.com/install.sh
+    install: "curl -fsSL https://cli.sailresearch.com/install.sh | sh"
+    official: true
+    notes: "First-party command-line tool. Also available via pip install sail. See cli/ artifact for the command surface."

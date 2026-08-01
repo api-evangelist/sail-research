@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/sail-research-openapi-original.json
+skills:
+  - file: sail-research-run-background-response.md
+    name: Run a background agent response on Sail
+    api: openapi/sail-research-openapi-original.json
+    operations: [createResponse, getResponse]
+  - file: sail-research-batch-inference.md
+    name: Run batch inference at scale on Sail
+    api: openapi/sail-research-openapi-original.json
+    operations: [createBatch, getBatch, listBatches, getBatchRequestResult]
+  - file: sail-research-anthropic-messages.md
+    name: Call Sail with the Anthropic Messages API
+    api: openapi/sail-research-openapi-original.json
+    operations: [createMessage, countMessageTokens, listModels]

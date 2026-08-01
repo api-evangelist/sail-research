@@ -1,0 +1,22 @@
+{
+  "provider": "sail-research",
+  "sources": [
+    "sail-research-batches-api-api-openapi.yml",
+    "sail-research-chat-completions-api-api-openapi.yml",
+    "sail-research-messages-api-api-openapi.yml",
+    "sail-research-models-api-api-openapi.yml",
+    "sail-research-responses-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "sail-research-batches-api-api-openapi.yml",
+    "sail-research-chat-completions-api-api-openapi.yml",
+    "sail-research-messages-api-api-openapi.yml",
+    "sail-research-models-api-api-openapi.yml",
+    "sail-research-responses-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

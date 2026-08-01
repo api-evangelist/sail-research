@@ -1,24 +1,197 @@
 aid: sail-research
 name: Sail Research
-description: 'Sail Research is a company surfaced as a portfolio company of kleiner-perkins and added
-  to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Sail Research provides infrastructure for long-horizon agents: cost-efficient inference
+  for leading open-source models (GLM, DeepSeek, Kimi, Nemotron and others) run on demand.
+  Its API is OpenAI- and Anthropic-compatible (Chat Completions, Responses, Messages, Batches),
+  so existing clients migrate by changing the base URL and key. Completion windows
+  (asap/priority/standard/flex) trade latency for lower per-token price for background and
+  agentic workloads, and Sailboxes provide full persistent VMs for long-running agents.
+  Sail raised $80M and is backed by Kleiner Perkins. This profile was enriched by the API
+  Evangelist pipeline from Sail's public OpenAPI, docs, SDKs, CLI, and MCP surface.
 url: https://raw.githubusercontent.com/api-evangelist/sail-research/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - kleiner-perkins
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://www.sailresearch.com/og-image.png
 tags:
 - Company
-- Ai
-apis: []
+- Artificial Intelligence
+- LLM
+- Inference
+- Agents
+- Machine Learning
+- Developer Tools
+apis:
+- aid: sail-research:sail-research-batches-api-api
+  name: Sail Research Batches API API
+  description: Submit and manage batches of requests.
+  humanURL: https://docs.sailresearch.com
+  baseURL: https://api.sailresearch.com/v1
+  tags:
+  - Batches API
+  properties:
+  - type: OpenAPI
+    url: openapi/sail-research-batches-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sailresearch.com
+  - type: APIReference
+    url: >-
+      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+  - type: GettingStarted
+    url: https://docs.sailresearch.com/quickstart
+- aid: sail-research:sail-research-chat-completions-api-api
+  name: Sail Research Chat Completions API API
+  description: OpenAI-compatible Chat Completions API endpoints.
+  humanURL: https://docs.sailresearch.com
+  baseURL: https://api.sailresearch.com/v1
+  tags:
+  - Chat Completions API
+  properties:
+  - type: OpenAPI
+    url: openapi/sail-research-chat-completions-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sailresearch.com
+  - type: APIReference
+    url: >-
+      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+  - type: GettingStarted
+    url: https://docs.sailresearch.com/quickstart
+- aid: sail-research:sail-research-messages-api-api
+  name: Sail Research Messages API API
+  description: Anthropic-compatible Messages API endpoints.
+  humanURL: https://docs.sailresearch.com
+  baseURL: https://api.sailresearch.com/v1
+  tags:
+  - Messages API
+  properties:
+  - type: OpenAPI
+    url: openapi/sail-research-messages-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sailresearch.com
+  - type: APIReference
+    url: >-
+      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+  - type: GettingStarted
+    url: https://docs.sailresearch.com/quickstart
+- aid: sail-research:sail-research-models-api-api
+  name: Sail Research Models API API
+  description: Model discovery endpoints.
+  humanURL: https://docs.sailresearch.com
+  baseURL: https://api.sailresearch.com/v1
+  tags:
+  - Models API
+  properties:
+  - type: OpenAPI
+    url: openapi/sail-research-models-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sailresearch.com
+  - type: APIReference
+    url: >-
+      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+  - type: GettingStarted
+    url: https://docs.sailresearch.com/quickstart
+- aid: sail-research:sail-research-responses-api-api
+  name: Sail Research Responses API API
+  description: OpenAI-compatible Responses API endpoints.
+  humanURL: https://docs.sailresearch.com
+  baseURL: https://api.sailresearch.com/v1
+  tags:
+  - Responses API
+  properties:
+  - type: OpenAPI
+    url: openapi/sail-research-responses-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.sailresearch.com
+  - type: APIReference
+    url: >-
+      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+  - type: GettingStarted
+    url: https://docs.sailresearch.com/quickstart
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DeveloperPortal
+  url: https://docs.sailresearch.com
+- type: Documentation
+  url: https://docs.sailresearch.com
+- type: APIReference
+  url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+- type: GettingStarted
+  url: https://docs.sailresearch.com/quickstart
+- type: Pricing
+  url: https://docs.sailresearch.com/pricing
+- type: SignUp
+  url: https://app.sailresearch.com
+- type: TermsOfService
+  url: https://www.sailresearch.com/terms
+- type: PrivacyPolicy
+  url: https://www.sailresearch.com/privacy
+- type: Blog
+  url: https://www.sailresearch.com/blog
+- type: GitHubOrganization
+  url: https://github.com/sailresearch
+- type: StatusPage
+  url: https://status.sailresearch.com
+- type: TrustCenter
+  url: https://trust.sailresearch.com
+- type: OpenAPI
+  url: openapi/sail-research-openapi-original.json
+- type: Authentication
+  url: authentication/sail-research-authentication.yml
+- type: DomainSecurity
+  url: security/sail-research-domain-security.yml
+- type: LLMsTxt
+  url: llms/sail-research-llms.txt
+- type: MCPServer
+  url: mcp/sail-research-mcp.yml
+- type: Packages
+  url: packages/sail-research-packages.yml
+- type: SDKs
+  url: packages/sail-research-packages.yml
+- type: CLI
+  url: cli/sail-research-cli.yml
+- type: Conventions
+  url: conventions/sail-research-conventions.yml
+- type: Idempotency
+  url: conventions/sail-research-conventions.yml
+- type: ErrorCatalog
+  url: errors/sail-research-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/sail-research-lifecycle.yml
+- type: Conformance
+  url: conformance/sail-research-conformance.yml
+- type: Webhooks
+  url: asyncapi/sail-research-webhooks.yml
+- type: DataModel
+  url: data-model/sail-research-data-model.yml
+- type: Overlay
+  url: overlays/sail-research-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sailresearch.com/reference/cli.md
+binary: sail
+install:
+  - method: curl
+    platform: macos-linux
+    command: "curl -fsSL https://cli.sailresearch.com/install.sh | sh"
+  - method: powershell
+    platform: windows
+    command: "irm https://cli.sailresearch.com/install.ps1 | iex"
+  - method: pip
+    platform: any
+    command: "pip install sail"
+command_groups:
+  - group: auth
+    commands: [login, whoami, logout]
+  - group: app
+    commands: [find, create, list]
+  - group: box (sailbox lifecycle)
+    commands: [create, show, list, terminate, sleep, pause, resume, checkpoint, upgrade]
+  - group: execution & access
+    commands: ["box exec", run, shell, cp]
+  - group: networking
+    commands: ["box expose", "box unexpose", "box listeners", "box address"]
+  - group: ssh
+    commands: ["box ssh enable", "box ssh alias", "box ssh disable"]
+  - group: config
+    commands: [get, set, unset, reset]
+  - group: shell
+    commands: [shell]
+    notes: local management REPL

@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sail-research-openapi-original.json
+standards:
+  - id: openai-chat-completions
+    conforms: true
+    evidence: "POST /chat/completions is an OpenAI-compatible Chat Completions endpoint (openapi + docs/migrate)."
+  - id: openai-responses
+    conforms: true
+    evidence: "POST /responses implements the OpenAI Responses API (background + streaming SSE)."
+  - id: anthropic-messages
+    conforms: true
+    evidence: "POST /messages is an Anthropic-compatible Messages endpoint; POST /messages/count_tokens mirrors token counting."
+  - id: openai-batches
+    conforms: true
+    evidence: "POST/GET /batches implement asynchronous batch processing in OpenAI-compatible shape."
+  - id: http-bearer-auth
+    conforms: true
+    evidence: "securityScheme BearerAuth (http/bearer, bearerFormat API Key)."
+  - id: sse-streaming
+    conforms: true
+    evidence: "Chat Completions and Responses support Server-Sent Events streaming (stream: true)."
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "Errors use the OpenAI error-object envelope ({error:{message,type,param,code}}), not application/problem+json."
+  - id: oauth2
+    conforms: false
+    evidence: "No oauth2 securityScheme; auth is bearer API key."

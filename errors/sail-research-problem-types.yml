@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sail-research-openapi-original.json
+format: openai-error-object
+envelope: '{ "error": { "message": string, "type": string, "param": string|null, "code": string|int|null
+  } }'
+problems:
+- status: 400
+  title: Bad request
+  operations:
+  - POST /responses#createResponse
+  - POST /chat/completions#createChatCompletion
+  - POST /messages#createMessage
+  - POST /batches#createBatch
+  - GET /batches#listBatches
+  - GET /batches/{batch_id}#getBatch
+  - GET /batches/{batch_id}/{custom_id}#getBatchRequestResult
+  - POST /messages/count_tokens#countMessageTokens
+- status: 401
+  title: Unauthorized
+  operations:
+  - GET /models#listModels
+  - POST /responses#createResponse
+  - GET /responses/{response_id}#getResponse
+  - POST /chat/completions#createChatCompletion
+  - POST /messages#createMessage
+  - POST /batches#createBatch
+  - GET /batches#listBatches
+  - GET /batches/{batch_id}#getBatch
+  - GET /batches/{batch_id}/{custom_id}#getBatchRequestResult
+  - POST /messages/count_tokens#countMessageTokens
+- status: 404
+  title: Not found
+  operations:
+  - GET /responses/{response_id}#getResponse
+  - GET /batches/{batch_id}#getBatch
+  - GET /batches/{batch_id}/{custom_id}#getBatchRequestResult
+- status: 408
+  title: Request timeout
+  operations:
+  - POST /chat/completions#createChatCompletion
+  - POST /messages#createMessage
+- status: 429
+  title: Too many requests
+  operations:
+  - POST /messages/count_tokens#countMessageTokens
+- status: 500
+  title: Internal server error
+  operations:
+  - POST /responses#createResponse
+  - GET /responses/{response_id}#getResponse
+  - POST /chat/completions#createChatCompletion
+  - POST /messages#createMessage
+  - POST /batches#createBatch
+  - GET /batches#listBatches
+  - GET /batches/{batch_id}#getBatch
+  - GET /batches/{batch_id}/{custom_id}#getBatchRequestResult
+  - POST /messages/count_tokens#countMessageTokens
+- status: 502
+  title: Bad gateway
+  operations:
+  - POST /responses#createResponse
+- status: 504
+  title: Gateway timeout
+  operations:
+  - POST /responses#createResponse

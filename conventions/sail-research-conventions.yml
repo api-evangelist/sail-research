@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sailresearch.com/openapi.json
+docs: https://docs.sailresearch.com/idempotency
+api: openapi/sail-research-openapi-original.json
+authentication:
+  style: bearer
+  header: "Authorization: Bearer $SAIL_API_KEY"
+  format: API Key
+  see: authentication/sail-research-authentication.yml
+idempotency:
+  supported: true
+  header: Idempotency-Key
+  in: header
+  required: false
+  max_length: 255
+  scope: "keyed by (organization, API key, Idempotency-Key)"
+  behavior: >-
+    Retrying with the same key returns the previously stored response instead of
+    re-running inference. Applies to POST /responses, /chat/completions, /messages, /batches.
+  docs: https://docs.sailresearch.com/idempotency
+pagination:
+  style: cursor
+  params: [after_id, before_id, limit]
+  applies_to: [GET /batches]
+metadata:
+  object: metadata
+  fields: [completion_window, completion_webhook, webhook_token]
+  notes: >-
+    Per-request metadata controls completion window (asap/priority/standard/flex latency-cost
+    tier), a completion webhook URL, and a bearer token used to authenticate webhook delivery.
+completion_windows:
+  tiers: [asap, priority, standard, flex]
+  notes: "Longer completion windows lower per-token price. See docs.sailresearch.com/completion-windows."
+error_envelope:
+  shape: '{ "error": { "message", "type", "param", "code" } }'
+  format: openai-compatible error object
+  see: errors/sail-research-problem-types.yml
+versioning:
+  scheme: date-based
+  current: '2026-02-18'
+  see: lifecycle/sail-research-lifecycle.yml
+compatibility:
+  openai: [Chat Completions, Responses, Models, Batches]
+  anthropic: [Messages, Count Tokens]
+  notes: "Drop-in migration by changing base URL to https://api.sailresearch.com/v1 and the API key."
+rate_limit_signaling:
+  documented: partial
+  notes: "429 responses are returned (e.g. countMessageTokens); see docs.sailresearch.com/requests_at_scale for scale guidance."

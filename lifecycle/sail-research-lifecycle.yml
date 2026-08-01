@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sailresearch.com
+versioning:
+  scheme: date-based
+  current: '2026-02-18'
+  notes: "OpenAPI info.version is a date stamp (2026-02-18). API path base is /v1."
+status_page: https://status.sailresearch.com
+support_matrix: https://docs.sailresearch.com/support
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: "No published deprecation/sunset policy found at time of enrichment."
+deprecated_operations: []

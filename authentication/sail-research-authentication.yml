@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/sail-research-openapi-original.json
+docs: https://docs.sailresearch.com/quickstart
+summary:
+  types:
+  - http
+  api_key_in:
+  - header
+notes: >-
+  Auth is a bearer API key. Send 'Authorization: Bearer $SAIL_API_KEY'. Keys are
+  created/managed at app.sailresearch.com. Sail is OpenAI- and Anthropic-SDK compatible,
+  so the same key drops into those clients by changing the base URL to
+  https://api.sailresearch.com/v1. No OAuth2 / scopes surface.
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: API Key
+  sources:
+  - openapi/sail-research-openapi-original.json
