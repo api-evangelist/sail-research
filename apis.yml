@@ -157,7 +157,7 @@ common:
 - type: TrustCenter
   url: https://trust.sailresearch.com
 - type: OpenAPI
-  url: openapi/sail-research-openapi-original.json
+  url: openapi/_original/sail-research-openapi-original.json
 - type: Authentication
   url: authentication/sail-research-authentication.yml
 - type: DomainSecurity
