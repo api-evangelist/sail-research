@@ -1,0 +1,689 @@
+{
+  "item": [
+    {
+      "id": "46c5f45d-f278-49c0-b9d3-4d761820dc58",
+      "name": "Messages API",
+      "description": {
+        "content": "Anthropic-compatible Messages API endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cda09605-4e57-4bde-b4c3-b947bcc51226",
+          "name": "Create an Anthropic message",
+          "request": {
+            "name": "Create an Anthropic message",
+            "description": {
+              "content": "Anthropic-compatible Messages endpoint supporting system prompts, tool calling, and streaming (SSE).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                "key": "anthropic-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"<string>\",\n      \"schema\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"name\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    \"effort\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": 4032.103809859341\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": true\n  },\n  \"thinking\": {\n    \"key_0\": 7302.924051991072\n  },\n  \"stream\": \"<boolean>\",\n  \"metadata\": {\n    \"completion_window\": \"<string>\",\n    \"completion_webhook\": \"<uri>\",\n    \"webhook_token\": \"<string>\",\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"context_management\": {\n    \"key_0\": true,\n    \"key_1\": 878\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1da5bc15-6c65-4ad9-83b0-fe817ecd47d7",
+              "name": "Anthropic-compatible message response. Returns a single JSON object by default, or an Anthropic Server-Sent Events stream when stream: true.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                    "key": "anthropic-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"zai-org/GLM-5.2-FP8\",\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Give me a short launch checklist for an API integration.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"message\",\n  \"role\": \"assistant\",\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"string\",\n      \"cache_control\": {\n        \"type\": \"ephemeral\",\n        \"key_0\": 7311\n      }\n    }\n  ],\n  \"model\": \"string\",\n  \"stop_reason\": \"max_tokens\",\n  \"stop_sequence\": \"string\",\n  \"usage\": {\n    \"input_tokens\": 2241,\n    \"output_tokens\": 5620\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae5970b0-0be8-4ec9-865d-b913a8364369",
+              "name": "Invalid request or unsupported feature.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                    "key": "anthropic-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"zai-org/GLM-5.2-FP8\",\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Give me a short launch checklist for an API integration.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "575c65ed-d44b-43e2-86d6-638992eb0786",
+              "name": "Authentication error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                    "key": "anthropic-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"zai-org/GLM-5.2-FP8\",\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Give me a short launch checklist for an API integration.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c20fe01-cd94-47aa-8c2c-cc10e81518d6",
+              "name": "Timed out waiting for completion.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                    "key": "anthropic-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"zai-org/GLM-5.2-FP8\",\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Give me a short launch checklist for an API integration.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e67b9b9-dc67-4bd1-84a7-8049ceb536c3",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Anthropic-compatible idempotency header. Same semantics as Idempotency-Key; used on the /messages endpoint to match Anthropic's conventions.",
+                    "key": "anthropic-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"zai-org/GLM-5.2-FP8\",\n  \"max_tokens\": 300,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Give me a short launch checklist for an API integration.\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c66bf34-e440-442a-9e8d-535413541454",
+          "name": "Count tokens for an Anthropic message",
+          "request": {
+            "name": "Count tokens for an Anthropic message",
+            "description": {
+              "content": "Counts the input tokens a create-message request would consume, without running the model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messages",
+                "count_tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"<string>\",\n      \"schema\": {\n        \"key_0\": true\n      },\n      \"name\": \"<string>\",\n      \"strict\": \"<boolean>\"\n    },\n    \"effort\": \"<string>\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": false,\n      \"key_1\": \"string\",\n      \"key_2\": 7198\n    },\n    {\n      \"key_0\": false\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": \"string\",\n    \"key_1\": 6904\n  },\n  \"thinking\": {\n    \"key_0\": false,\n    \"key_1\": true,\n    \"key_2\": 6855.499741423254\n  },\n  \"metadata\": {\n    \"completion_window\": \"<string>\",\n    \"completion_webhook\": \"<uri>\",\n    \"webhook_token\": \"<string>\",\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"context_management\": {\n    \"key_0\": 2092,\n    \"key_1\": \"string\",\n    \"key_2\": 5529\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd1d3000-d7a6-4dc7-9de9-88278a8d3f1e",
+              "name": "Input token count.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "count_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"json_schema\",\n      \"schema\": {\n        \"key_0\": 5646,\n        \"key_1\": false\n      },\n      \"name\": \"string\",\n      \"strict\": false\n    },\n    \"effort\": \"low\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6310.938524584369\n    },\n    {\n      \"key_0\": 2797.011432211781\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": 1993.7209478014395\n  },\n  \"thinking\": {\n    \"key_0\": 8943\n  },\n  \"metadata\": {\n    \"completion_window\": \"priority\",\n    \"completion_webhook\": \"http://LfqleixrqCZxjNWudIMEgesfHJqbNznX.zgtmyZ6zX7t9DnURbHhQBEYW8PkBU18mJup,0QAPTz-soS+0.AvkTTUK4xewffMMmet-0MsDr\",\n    \"webhook_token\": \"string\"\n  },\n  \"context_management\": {\n    \"key_0\": 7903\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input_tokens\": 5612\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b8a6f0e-6680-47e8-870a-b5cad0f55a0b",
+              "name": "Invalid request or unsupported feature.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "count_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"json_schema\",\n      \"schema\": {\n        \"key_0\": 5646,\n        \"key_1\": false\n      },\n      \"name\": \"string\",\n      \"strict\": false\n    },\n    \"effort\": \"low\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6310.938524584369\n    },\n    {\n      \"key_0\": 2797.011432211781\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": 1993.7209478014395\n  },\n  \"thinking\": {\n    \"key_0\": 8943\n  },\n  \"metadata\": {\n    \"completion_window\": \"priority\",\n    \"completion_webhook\": \"http://LfqleixrqCZxjNWudIMEgesfHJqbNznX.zgtmyZ6zX7t9DnURbHhQBEYW8PkBU18mJup,0QAPTz-soS+0.AvkTTUK4xewffMMmet-0MsDr\",\n    \"webhook_token\": \"string\"\n  },\n  \"context_management\": {\n    \"key_0\": 7903\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3b1bc5b-aafa-4232-be82-64f351dae2ef",
+              "name": "Authentication error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "count_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"json_schema\",\n      \"schema\": {\n        \"key_0\": 5646,\n        \"key_1\": false\n      },\n      \"name\": \"string\",\n      \"strict\": false\n    },\n    \"effort\": \"low\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6310.938524584369\n    },\n    {\n      \"key_0\": 2797.011432211781\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": 1993.7209478014395\n  },\n  \"thinking\": {\n    \"key_0\": 8943\n  },\n  \"metadata\": {\n    \"completion_window\": \"priority\",\n    \"completion_webhook\": \"http://LfqleixrqCZxjNWudIMEgesfHJqbNznX.zgtmyZ6zX7t9DnURbHhQBEYW8PkBU18mJup,0QAPTz-soS+0.AvkTTUK4xewffMMmet-0MsDr\",\n    \"webhook_token\": \"string\"\n  },\n  \"context_management\": {\n    \"key_0\": 7903\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38c65933-980a-4381-b879-8cc00f770db1",
+              "name": "Tokenizer at capacity; retry with backoff (Retry-After header set).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "count_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"json_schema\",\n      \"schema\": {\n        \"key_0\": 5646,\n        \"key_1\": false\n      },\n      \"name\": \"string\",\n      \"strict\": false\n    },\n    \"effort\": \"low\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6310.938524584369\n    },\n    {\n      \"key_0\": 2797.011432211781\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": 1993.7209478014395\n  },\n  \"thinking\": {\n    \"key_0\": 8943\n  },\n  \"metadata\": {\n    \"completion_window\": \"priority\",\n    \"completion_webhook\": \"http://LfqleixrqCZxjNWudIMEgesfHJqbNznX.zgtmyZ6zX7t9DnURbHhQBEYW8PkBU18mJup,0QAPTz-soS+0.AvkTTUK4xewffMMmet-0MsDr\",\n    \"webhook_token\": \"string\"\n  },\n  \"context_management\": {\n    \"key_0\": 7903\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bbe9858-93f2-4e12-87d6-1a9fd43506e7",
+              "name": "Server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messages",
+                    "count_tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"string\"\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"system\": \"<string>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"output_config\": {\n    \"format\": {\n      \"type\": \"json_schema\",\n      \"schema\": {\n        \"key_0\": 5646,\n        \"key_1\": false\n      },\n      \"name\": \"string\",\n      \"strict\": false\n    },\n    \"effort\": \"low\"\n  },\n  \"tools\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6310.938524584369\n    },\n    {\n      \"key_0\": 2797.011432211781\n    }\n  ],\n  \"tool_choice\": {\n    \"key_0\": 1993.7209478014395\n  },\n  \"thinking\": {\n    \"key_0\": 8943\n  },\n  \"metadata\": {\n    \"completion_window\": \"priority\",\n    \"completion_webhook\": \"http://LfqleixrqCZxjNWudIMEgesfHJqbNznX.zgtmyZ6zX7t9DnURbHhQBEYW8PkBU18mJup,0QAPTz-soS+0.AvkTTUK4xewffMMmet-0MsDr\",\n    \"webhook_token\": \"string\"\n  },\n  \"context_management\": {\n    \"key_0\": 7903\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"message\": \"string\",\n    \"type\": \"string\",\n    \"param\": \"string\",\n    \"code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sailresearch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "752e5ff2-0123-4098-8e73-e1f6f4e718c0",
+    "name": "Sail Batches API Messages API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Sail provides OpenAI-compatible Responses and Chat Completions endpoints, plus an Anthropic-compatible Messages endpoint. This reference documents the currently supported subset of fields.",
+      "type": "text/plain"
+    }
+  }
+}

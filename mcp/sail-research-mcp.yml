@@ -6,17 +6,20 @@ server:
   name: sail-docs
   transport: http
   url: https://docs.sailresearch.com/mcp
-  description: >-
-    Sail's hosted documentation MCP server. Connects agents/IDEs to Sail's docs so
-    they can answer questions about models, pricing, completion windows, Sailbox
-    setup and execution, and the platform in general.
+  description: Sail's hosted documentation MCP server. Connects agents/IDEs to Sail's docs so they can
+    answer questions about models, pricing, completion windows, Sailbox setup and execution, and the platform
+    in general.
   install:
-    claude_code: "claude mcp add --transport http sail-docs https://docs.sailresearch.com/mcp"
+    claude_code: claude mcp add --transport http sail-docs https://docs.sailresearch.com/mcp
     config_files:
-      - .mcp.json
-      - .cursor/mcp.json
-      - .vscode/mcp.json
-  notes: >-
-    This is a documentation MCP server (not an inference/action server). Sail's
-    inference API itself is OpenAI- and Anthropic-compatible and is consumed via
-    those SDKs rather than a dedicated action MCP server.
+    - .mcp.json
+    - .cursor/mcp.json
+    - .vscode/mcp.json
+  notes: This is a documentation MCP server (not an inference/action server). Sail's inference API itself
+    is OpenAI- and Anthropic-compatible and is consumed via those SDKs rather than a dedicated action
+    MCP server.
+deployment:
+  mode: remote
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
