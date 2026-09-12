@@ -153,6 +153,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Website
+  url: https://www.sailresearch.com/
 - type: DeveloperPortal
   url: https://docs.sailresearch.com
 - type: Documentation
