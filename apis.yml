@@ -1,14 +1,12 @@
 aid: sail-research
 name: Sail Research
-description: >-
-  Sail Research provides infrastructure for long-horizon agents: cost-efficient inference
-  for leading open-source models (GLM, DeepSeek, Kimi, Nemotron and others) run on demand.
-  Its API is OpenAI- and Anthropic-compatible (Chat Completions, Responses, Messages, Batches),
-  so existing clients migrate by changing the base URL and key. Completion windows
-  (asap/priority/standard/flex) trade latency for lower per-token price for background and
-  agentic workloads, and Sailboxes provide full persistent VMs for long-running agents.
-  Sail raised $80M and is backed by Kleiner Perkins. This profile was enriched by the API
-  Evangelist pipeline from Sail's public OpenAPI, docs, SDKs, CLI, and MCP surface.
+description: 'Sail Research provides infrastructure for long-horizon agents: cost-efficient inference
+  for leading open-source models (GLM, DeepSeek, Kimi, Nemotron and others) run on demand. Its API is
+  OpenAI- and Anthropic-compatible (Chat Completions, Responses, Messages, Batches), so existing clients
+  migrate by changing the base URL and key. Completion windows (asap/priority/standard/flex) trade latency
+  for lower per-token price for background and agentic workloads, and Sailboxes provide full persistent
+  VMs for long-running agents. Sail raised $80M and is backed by Kleiner Perkins. This profile was enriched
+  by the API Evangelist pipeline from Sail''s public OpenAPI, docs, SDKs, CLI, and MCP surface.'
 url: https://raw.githubusercontent.com/api-evangelist/sail-research/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -43,7 +41,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-09-16'
 image: https://www.sailresearch.com/og-image.png
 tags:
 - Company
@@ -63,7 +61,7 @@ tags_raw:
 - Developer Tools
 apis:
 - aid: sail-research:sail-research-batches-api-api
-  name: Sail Research Batches API API
+  name: Sail Research Batches API
   description: Submit and manage batches of requests.
   humanURL: https://docs.sailresearch.com
   baseURL: https://api.sailresearch.com/v1
@@ -75,12 +73,11 @@ apis:
   - type: Documentation
     url: https://docs.sailresearch.com
   - type: APIReference
-    url: >-
-      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+    url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
   - type: GettingStarted
     url: https://docs.sailresearch.com/quickstart
 - aid: sail-research:sail-research-chat-completions-api-api
-  name: Sail Research Chat Completions API API
+  name: Sail Research Chat Completions API
   description: OpenAI-compatible Chat Completions API endpoints.
   humanURL: https://docs.sailresearch.com
   baseURL: https://api.sailresearch.com/v1
@@ -92,12 +89,11 @@ apis:
   - type: Documentation
     url: https://docs.sailresearch.com
   - type: APIReference
-    url: >-
-      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+    url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
   - type: GettingStarted
     url: https://docs.sailresearch.com/quickstart
 - aid: sail-research:sail-research-messages-api-api
-  name: Sail Research Messages API API
+  name: Sail Research Messages API
   description: Anthropic-compatible Messages API endpoints.
   humanURL: https://docs.sailresearch.com
   baseURL: https://api.sailresearch.com/v1
@@ -109,12 +105,11 @@ apis:
   - type: Documentation
     url: https://docs.sailresearch.com
   - type: APIReference
-    url: >-
-      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+    url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
   - type: GettingStarted
     url: https://docs.sailresearch.com/quickstart
 - aid: sail-research:sail-research-models-api-api
-  name: Sail Research Models API API
+  name: Sail Research Models API
   description: Model discovery endpoints.
   humanURL: https://docs.sailresearch.com
   baseURL: https://api.sailresearch.com/v1
@@ -126,12 +121,11 @@ apis:
   - type: Documentation
     url: https://docs.sailresearch.com
   - type: APIReference
-    url: >-
-      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+    url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
   - type: GettingStarted
     url: https://docs.sailresearch.com/quickstart
 - aid: sail-research:sail-research-responses-api-api
-  name: Sail Research Responses API API
+  name: Sail Research Responses API
   description: OpenAI-compatible Responses API endpoints.
   humanURL: https://docs.sailresearch.com
   baseURL: https://api.sailresearch.com/v1
@@ -143,8 +137,7 @@ apis:
   - type: Documentation
     url: https://docs.sailresearch.com
   - type: APIReference
-    url: >-
-      https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
+    url: https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion
   - type: GettingStarted
     url: https://docs.sailresearch.com/quickstart
 maintainers:
