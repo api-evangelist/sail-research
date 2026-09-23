@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Sail Batches API Models API API
+  title: Sail Models API
   version: '2026-02-18'
   description: Sail provides OpenAI-compatible Responses and Chat Completions endpoints, plus an Anthropic-compatible Messages endpoint. This reference documents the currently supported subset of fields.
 servers:
@@ -60,6 +60,21 @@ components:
         error:
           $ref: '#/components/schemas/ErrorObject'
       additionalProperties: false
+    ModelListResponse:
+      type: object
+      required:
+      - object
+      - data
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelObject'
+      additionalProperties: false
     ModelObject:
       type: object
       required:
@@ -78,21 +93,6 @@ components:
           type: integer
         owned_by:
           type: string
-      additionalProperties: false
-    ModelListResponse:
-      type: object
-      required:
-      - object
-      - data
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelObject'
       additionalProperties: false
   securitySchemes:
     BearerAuth:

@@ -1,11 +1,7 @@
 {
   "provider": "sail-research",
   "sources": [
-    "sail-research-batches-api-api-openapi.yml",
-    "sail-research-chat-completions-api-api-openapi.yml",
-    "sail-research-messages-api-api-openapi.yml",
-    "sail-research-models-api-api-openapi.yml",
-    "sail-research-responses-api-api-openapi.yml"
+    "_original/sail-research-openapi-original.json"
   ],
   "outputs": [
     "sail-research-batches-api-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sail-research-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sail-research-batches-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sail-research-chat-completions-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sail-research-messages-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sail-research-models-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sail-research-responses-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
