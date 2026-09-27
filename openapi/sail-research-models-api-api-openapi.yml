@@ -32,34 +32,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorObject:
-      type: object
-      required:
-      - message
-      - type
-      properties:
-        message:
-          type: string
-        type:
-          type: string
-        param:
-          oneOf:
-          - type: string
-          - type: 'null'
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-          - type: 'null'
-      additionalProperties: true
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          $ref: '#/components/schemas/ErrorObject'
-      additionalProperties: false
     ModelListResponse:
       type: object
       required:
@@ -93,6 +65,34 @@ components:
           type: integer
         owned_by:
           type: string
+      additionalProperties: false
+    ErrorObject:
+      type: object
+      required:
+      - message
+      - type
+      properties:
+        message:
+          type: string
+        type:
+          type: string
+        param:
+          oneOf:
+          - type: string
+          - type: 'null'
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+          - type: 'null'
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorObject'
       additionalProperties: false
   securitySchemes:
     BearerAuth:

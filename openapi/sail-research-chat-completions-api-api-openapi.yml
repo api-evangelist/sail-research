@@ -70,140 +70,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ChatCompletionChunk:
-      type: object
-      description: 'One Server-Sent Events chunk emitted when stream: true. The streamed response is a sequence of these chat.completion.chunk objects, each sent as an SSE data: line and terminated by a final data: [DONE] line.'
-      required:
-      - id
-      - object
-      - created
-      - model
-      - choices
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - chat.completion.chunk
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatCompletionChunkChoice'
-        usage:
-          $ref: '#/components/schemas/ChatCompletionUsage'
-      additionalProperties: false
-    ChatCompletionUsage:
+    ErrorResponse:
       type: object
       required:
-      - prompt_tokens
-      - completion_tokens
-      - total_tokens
+      - error
       properties:
-        prompt_tokens:
-          type: integer
-        completion_tokens:
-          type: integer
-        total_tokens:
-          type: integer
-        prompt_tokens_details:
-          type: object
-          additionalProperties: true
-        completion_tokens_details:
-          type: object
-          additionalProperties: true
+        error:
+          $ref: '#/components/schemas/ErrorObject'
       additionalProperties: false
-    ChatCompletionChunkToolCallFunction:
-      type: object
-      properties:
-        name:
-          type: string
-        arguments:
-          type: string
-        input:
-          type: string
-      additionalProperties: false
-    ChatCompletionMessage:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          type: string
-          enum:
-          - system
-          - user
-          - assistant
-          - tool
-          - function
-          - developer
-        content:
-          oneOf:
-          - type: string
-          - type: 'null'
-          - type: array
-            items:
-              oneOf:
-              - $ref: '#/components/schemas/ChatTextContentPart'
-              - $ref: '#/components/schemas/ChatImageContentPart'
-        name:
-          type: string
-        tool_calls:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        tool_call_id:
-          type: string
-        function_call:
-          type: object
-          additionalProperties: true
-      additionalProperties: false
-    ChatCompletionChunkChoice:
-      type: object
-      required:
-      - index
-      - delta
-      properties:
-        index:
-          type: integer
-        delta:
-          $ref: '#/components/schemas/ChatCompletionChunkDelta'
-        logprobs:
-          type: 'null'
-        finish_reason:
-          type:
-          - string
-          - 'null'
-          enum:
-          - stop
-          - tool_calls
-          - null
-      additionalProperties: false
-    ErrorObject:
-      type: object
-      required:
-      - message
-      - type
-      properties:
-        message:
-          type: string
-        type:
-          type: string
-        param:
-          oneOf:
-          - type: string
-          - type: 'null'
-        code:
-          oneOf:
-          - type: string
-          - type: integer
-          - type: 'null'
-      additionalProperties: true
     ChatCompletionChunkToolCall:
       type: object
       properties:
@@ -218,79 +92,6 @@ components:
         custom:
           $ref: '#/components/schemas/ChatCompletionChunkToolCallFunction'
       additionalProperties: false
-    ChatCompletionResponseMessage:
-      type: object
-      required:
-      - role
-      - content
-      properties:
-        role:
-          type: string
-          enum:
-          - assistant
-        content:
-          oneOf:
-          - type: string
-          - type: 'null'
-        reasoning_content:
-          oneOf:
-          - type: string
-          - type: 'null'
-        refusal:
-          oneOf:
-          - type: string
-          - type: 'null'
-      additionalProperties: true
-    ChatResponseFormatText:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-      additionalProperties: false
-    ChatTextContentPart:
-      type: object
-      required:
-      - type
-      - text
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-        text:
-          type: string
-      additionalProperties: false
-    ChatCompletionResponse:
-      type: object
-      required:
-      - id
-      - object
-      - created
-      - model
-      - choices
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          enum:
-          - chat.completion
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/ChatCompletionChoice'
-        usage:
-          $ref: '#/components/schemas/ChatCompletionUsage'
-      additionalProperties: true
     CreateChatCompletionRequest:
       type: object
       required:
@@ -371,31 +172,107 @@ components:
         metadata:
           $ref: '#/components/schemas/RequestMetadata'
       additionalProperties: true
-    ChatResponseFormatJsonSchema:
+    RequestMetadata:
+      type: object
+      description: Optional string metadata. completion_window controls scheduling; completion_webhook/webhook_token configure completion webhooks.
+      properties:
+        completion_window:
+          type: string
+          description: '[Completion window](/completion-windows) (i.e. latency tier) for the request. Support matrix is available on the [Pricing](/pricing) page. When omitted, defaults to `standard` if that window is supported for the model; otherwise `flex` for async requests when the model supports it, and `asap` in all other cases. See [default behavior](/completion-windows#default-behavior).'
+          enum:
+          - asap
+          - priority
+          - standard
+          - flex
+        completion_webhook:
+          type: string
+          format: uri
+        webhook_token:
+          type: string
+      additionalProperties:
+        type: string
+    ChatCompletionResponse:
+      type: object
+      required:
+      - id
+      - object
+      - created
+      - model
+      - choices
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ChatCompletionChoice'
+        usage:
+          $ref: '#/components/schemas/ChatCompletionUsage'
+      additionalProperties: true
+    ChatCompletionChunkDelta:
+      type: object
+      properties:
+        role:
+          type: string
+        content:
+          type: string
+        reasoning_content:
+          type: string
+        refusal:
+          type: string
+        tool_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionChunkToolCall'
+      additionalProperties: false
+    ChatTextContentPart:
       type: object
       required:
       - type
-      - json_schema
+      - text
       properties:
         type:
           type: string
           enum:
-          - json_schema
-        json_schema:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-            description:
-              type: string
-            schema:
-              type: object
-              additionalProperties: true
-            strict:
-              type: boolean
-          additionalProperties: false
+          - text
+        text:
+          type: string
+      additionalProperties: false
+    ChatCompletionChunk:
+      type: object
+      description: 'One Server-Sent Events chunk emitted when stream: true. The streamed response is a sequence of these chat.completion.chunk objects, each sent as an SSE data: line and terminated by a final data: [DONE] line.'
+      required:
+      - id
+      - object
+      - created
+      - model
+      - choices
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - chat.completion.chunk
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatCompletionChunkChoice'
+        usage:
+          $ref: '#/components/schemas/ChatCompletionUsage'
       additionalProperties: false
     ChatCompletionChoice:
       type: object
@@ -420,22 +297,67 @@ components:
           - content_filter
           - function_call
       additionalProperties: false
-    ChatCompletionChunkDelta:
+    ChatCompletionChunkChoice:
       type: object
+      required:
+      - index
+      - delta
       properties:
-        role:
-          type: string
-        content:
-          type: string
-        reasoning_content:
-          type: string
-        refusal:
-          type: string
-        tool_calls:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatCompletionChunkToolCall'
+        index:
+          type: integer
+        delta:
+          $ref: '#/components/schemas/ChatCompletionChunkDelta'
+        logprobs:
+          type: 'null'
+        finish_reason:
+          type:
+          - string
+          - 'null'
+          enum:
+          - stop
+          - tool_calls
+          - null
       additionalProperties: false
+    ChatCompletionUsage:
+      type: object
+      required:
+      - prompt_tokens
+      - completion_tokens
+      - total_tokens
+      properties:
+        prompt_tokens:
+          type: integer
+        completion_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+        prompt_tokens_details:
+          type: object
+          additionalProperties: true
+        completion_tokens_details:
+          type: object
+          additionalProperties: true
+      additionalProperties: false
+    ErrorObject:
+      type: object
+      required:
+      - message
+      - type
+      properties:
+        message:
+          type: string
+        type:
+          type: string
+        param:
+          oneOf:
+          - type: string
+          - type: 'null'
+        code:
+          oneOf:
+          - type: string
+          - type: integer
+          - type: 'null'
+      additionalProperties: true
     ChatImageContentPart:
       type: object
       description: Image content part. Image input is supported only on multimodal models; see the Models page.
@@ -463,32 +385,110 @@ components:
               - high
           additionalProperties: false
       additionalProperties: false
-    RequestMetadata:
-      type: object
-      description: Optional string metadata. completion_window controls scheduling; completion_webhook/webhook_token configure completion webhooks.
-      properties:
-        completion_window:
-          type: string
-          description: '[Completion window](/completion-windows) (i.e. latency tier) for the request. Support matrix is available on the [Pricing](/pricing) page. When omitted, defaults to `standard` if that window is supported for the model; otherwise `flex` for async requests when the model supports it, and `asap` in all other cases. See [default behavior](/completion-windows#default-behavior).'
-          enum:
-          - asap
-          - priority
-          - standard
-          - flex
-        completion_webhook:
-          type: string
-          format: uri
-        webhook_token:
-          type: string
-      additionalProperties:
-        type: string
-    ErrorResponse:
+    ChatCompletionResponseMessage:
       type: object
       required:
-      - error
+      - role
+      - content
       properties:
-        error:
-          $ref: '#/components/schemas/ErrorObject'
+        role:
+          type: string
+          enum:
+          - assistant
+        content:
+          oneOf:
+          - type: string
+          - type: 'null'
+        reasoning_content:
+          oneOf:
+          - type: string
+          - type: 'null'
+        refusal:
+          oneOf:
+          - type: string
+          - type: 'null'
+      additionalProperties: true
+    ChatResponseFormatText:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+      additionalProperties: false
+    ChatResponseFormatJsonSchema:
+      type: object
+      required:
+      - type
+      - json_schema
+      properties:
+        type:
+          type: string
+          enum:
+          - json_schema
+        json_schema:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            schema:
+              type: object
+              additionalProperties: true
+            strict:
+              type: boolean
+          additionalProperties: false
+      additionalProperties: false
+    ChatCompletionChunkToolCallFunction:
+      type: object
+      properties:
+        name:
+          type: string
+        arguments:
+          type: string
+        input:
+          type: string
+      additionalProperties: false
+    ChatCompletionMessage:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+          - function
+          - developer
+        content:
+          oneOf:
+          - type: string
+          - type: 'null'
+          - type: array
+            items:
+              oneOf:
+              - $ref: '#/components/schemas/ChatTextContentPart'
+              - $ref: '#/components/schemas/ChatImageContentPart'
+        name:
+          type: string
+        tool_calls:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tool_call_id:
+          type: string
+        function_call:
+          type: object
+          additionalProperties: true
       additionalProperties: false
   parameters:
     IdempotencyKey:
