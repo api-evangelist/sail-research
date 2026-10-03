@@ -32,21 +32,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ModelListResponse:
-      type: object
-      required:
-      - object
-      - data
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelObject'
-      additionalProperties: false
     ModelObject:
       type: object
       required:
@@ -65,6 +50,29 @@ components:
           type: integer
         owned_by:
           type: string
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorObject'
+      additionalProperties: false
+    ModelListResponse:
+      type: object
+      required:
+      - object
+      - data
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelObject'
       additionalProperties: false
     ErrorObject:
       type: object
@@ -86,14 +94,6 @@ components:
           - type: integer
           - type: 'null'
       additionalProperties: true
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          $ref: '#/components/schemas/ErrorObject'
-      additionalProperties: false
   securitySchemes:
     BearerAuth:
       type: http
