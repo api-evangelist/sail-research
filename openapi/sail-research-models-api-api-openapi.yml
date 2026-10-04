@@ -51,14 +51,6 @@ components:
         owned_by:
           type: string
       additionalProperties: false
-    ErrorResponse:
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          $ref: '#/components/schemas/ErrorObject'
-      additionalProperties: false
     ModelListResponse:
       type: object
       required:
@@ -73,6 +65,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ModelObject'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorObject'
       additionalProperties: false
     ErrorObject:
       type: object
