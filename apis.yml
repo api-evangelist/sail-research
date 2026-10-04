@@ -147,6 +147,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/sail-research-capability-edges.yml
+  name: Sail Research Business Capability Map
 - type: Website
   url: https://www.sailresearch.com/
 - type: DeveloperPortal

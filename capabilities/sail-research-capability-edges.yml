@@ -1,0 +1,42 @@
+slug: sail-research
+provider: Sail Research
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Chat Completions API
+  spec_file: sail-research-chat-completions-api-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /chat/completions  createChatCompletion  Create a chat completion
+  reason: LLM inference serving for open-source models; closest honest fit is AI/ML model lifecycle and
+    operation under Information & Data Management.
+- tag: Messages API
+  spec_file: sail-research-messages-api-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /messages  createMessage  Create an Anthropic message; POST /messages/count_tokens  countMessageTokens
+  reason: Anthropic-compatible model inference endpoint plus token counting — AI model serving, mapped
+    to Artificial Intelligence Management; 'Messages' here is not customer communications.
+- tag: Responses API
+  spec_file: sail-research-responses-api-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /responses  createResponse  Create a response ... ResponseReasoningConfiguration, ResponseUsage
+  reason: Operations execute generative model inference (reasoning config, token usage) — AI/ML model
+    operation rather than any business-domain capability.
