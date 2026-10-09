@@ -1,0 +1,135 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://docs.sailresearch.com/pricing
+sources:
+- https://docs.sailresearch.com/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+  managed_tier: Pro
+published: true
+note: 'Page lists per-1M-token inference prices per model and completion window (Default/Balanced/Flex),
+  Sailbox usage dimensions, and three plans (Free, Pro $250/month, Enterprise Custom). Only a sample of
+  per-token rows captured in plans; full table in page text. US-only inference surcharges: 20% (Pro),
+  10% (Enterprise).'
+plan_count: 7
+currency: USD
+plans:
+- name: Free
+  price_text: Free to start, pay-as-you-go
+  currency: USD
+  period: month
+  included_quota: $5/month in free credits when you attach a payment method; Up to 4 seats; Up to 100
+    concurrent Sailboxes
+  overage: Usage-based pricing with prepaid credits
+- name: Pro
+  price_text: $250 /month
+  price: 250
+  currency: USD
+  period: month
+  included_quota: $100/month in included credits, with an additional $150 in your first month; Unlimited
+    seats; Up to 5,000 concurrent Sailboxes
+  overage: Usage-based pricing with prepaid credits
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Volume pricing, billed monthly in arrears
+- name: Kimi K3 (Default ASAP) input
+  price_text: $ 2.50
+  price: 2.5
+  currency: USD
+  period: per-use
+  unit: per 1M input tokens
+- name: Kimi K3 (Default ASAP) output
+  price_text: $ 12.50
+  price: 12.5
+  currency: USD
+  period: per-use
+  unit: per 1M output tokens
+- name: Sailbox vCPU/hour
+  price_text: $0.015
+  price: 0.015
+  currency: USD
+  period: per-use
+  unit: used vCPU/hour
+- name: Sailbox RAM
+  price_text: $0.008
+  price: 0.008
+  currency: USD
+  period: per-use
+  unit: used RAM (GiB)/hour
+rate_limit_statements:
+- Increased access to model capacity and higher rate limits
+- Up to 100 concurrent Sailboxes
+- Up to 5,000 concurrent Sailboxes
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - token
+  plans:
+  - name: Free
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Kimi K3 (Default ASAP) input
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: Kimi K3 (Default ASAP) output
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - token
+    periods:
+    - other
+  - name: Sailbox vCPU/hour
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Sailbox RAM
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
