@@ -303,110 +303,49 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateBatchRequest:
+    ResponseInputMessage:
       type: object
       required:
-      - endpoint
-      - requests
+      - role
+      - content
       properties:
-        endpoint:
+        role:
           type: string
           enum:
-          - /v1/responses
-          description: The API endpoint to use for all requests in the batch. Currently only /v1/responses is supported.
-        requests:
-          type: array
-          minItems: 1
-          maxItems: 100000
-          description: The list of requests in the batch. Min 1, max 100,000 requests. Total request body must not exceed 256 MB.
-          items:
-            $ref: '#/components/schemas/BatchRequestItem'
-        label:
-          type: string
-          pattern: ^[a-zA-Z0-9_-]+$
-          maxLength: 128
-          description: An optional label for the batch. Must be alphanumeric (hyphens and underscores allowed), max 128 characters.
-      additionalProperties: false
-    ResponseInputTextPart:
-      type: object
-      required:
-      - type
-      - text
-      properties:
-        type:
-          type: string
-          enum:
-          - input_text
-        text:
-          type: string
-      additionalProperties: false
-    ResponseTextConfiguration:
-      type: object
-      required:
-      - format
-      properties:
-        format:
+          - system
+          - user
+          - assistant
+          - tool
+          - function
+        content:
           oneOf:
-          - $ref: '#/components/schemas/ResponseTextFormat'
-          - $ref: '#/components/schemas/ResponseJsonSchemaFormat'
-      additionalProperties: false
-    ResponseInputImagePart:
-      type: object
-      description: Image content part. Image input is supported only on multimodal models; see the Models page.
-      required:
-      - type
-      - image_url
-      properties:
-        type:
-          type: string
-          enum:
-          - input_image
-        image_url:
-          type: string
-          description: Public http(s) URL or a base64 data URI (data:<media-type>;base64,<data>).
-        detail:
-          type: string
-          enum:
-          - auto
-          - low
-          - high
-      additionalProperties: false
-    BatchRequestItem:
-      type: object
-      required:
-      - custom_id
-      - params
-      properties:
-        custom_id:
-          type: string
-          pattern: ^[a-z0-9][a-z0-9_-]*$
-          minLength: 1
-          maxLength: 64
-          description: A unique identifier for this request within the batch. Must be lowercase alphanumeric and can include hyphens and underscores. Min 1 character, max 64 characters.
-        params:
-          type: object
-          description: The request parameters (same fields as a Responses API request body).
-          additionalProperties: true
-      additionalProperties: false
-    ResponseJsonSchemaFormat:
-      type: object
-      required:
-      - type
-      - name
-      properties:
-        type:
-          type: string
-          enum:
-          - json_schema
+          - type: string
+          - type: array
+            minItems: 1
+            items:
+              oneOf:
+              - $ref: '#/components/schemas/ResponseInputTextPart'
+              - $ref: '#/components/schemas/ResponseInputImagePart'
         name:
           type: string
-        description:
+        tool_calls:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tool_call_id:
           type: string
-        schema:
+        function_call:
           type: object
           additionalProperties: true
-        strict:
-          type: boolean
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorObject'
       additionalProperties: false
     ResponseObject:
       type: object
@@ -501,17 +440,6 @@ components:
           type: object
           additionalProperties: true
       additionalProperties: true
-    ResponseUsageDetails:
-      type: object
-      required:
-      - cached_tokens
-      - reasoning_tokens
-      properties:
-        cached_tokens:
-          type: integer
-        reasoning_tokens:
-          type: integer
-      additionalProperties: false
     ErrorObject:
       type: object
       required:
@@ -532,62 +460,70 @@ components:
           - type: integer
           - type: 'null'
       additionalProperties: true
-    ResponseInputObject:
+    CreateBatchRequest:
       type: object
       required:
-      - messages
+      - endpoint
+      - requests
       properties:
-        messages:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/ResponseInputMessage'
-      additionalProperties: false
-    ResponseInput:
-      description: Text input, plus image input (input_image) on multimodal models. Audio, files, and item references are not currently supported.
-      oneOf:
-      - type: string
-        minLength: 1
-      - type: array
-        minItems: 1
-        items:
-          $ref: '#/components/schemas/ResponseInputMessage'
-      - $ref: '#/components/schemas/ResponseInputObject'
-    ResponseInputMessage:
-      type: object
-      required:
-      - role
-      - content
-      properties:
-        role:
+        endpoint:
           type: string
           enum:
-          - system
-          - user
-          - assistant
-          - tool
-          - function
-        content:
-          oneOf:
-          - type: string
-          - type: array
-            minItems: 1
-            items:
-              oneOf:
-              - $ref: '#/components/schemas/ResponseInputTextPart'
-              - $ref: '#/components/schemas/ResponseInputImagePart'
-        name:
-          type: string
-        tool_calls:
+          - /v1/responses
+          description: The API endpoint to use for all requests in the batch. Currently only /v1/responses is supported.
+        requests:
           type: array
+          minItems: 1
+          maxItems: 100000
+          description: The list of requests in the batch. Min 1, max 100,000 requests. Total request body must not exceed 256 MB.
           items:
-            type: object
-            additionalProperties: true
-        tool_call_id:
+            $ref: '#/components/schemas/BatchRequestItem'
+        label:
           type: string
-        function_call:
+          pattern: ^[a-zA-Z0-9_-]+$
+          maxLength: 128
+          description: An optional label for the batch. Must be alphanumeric (hyphens and underscores allowed), max 128 characters.
+      additionalProperties: false
+    BatchRequestItem:
+      type: object
+      required:
+      - custom_id
+      - params
+      properties:
+        custom_id:
+          type: string
+          pattern: ^[a-z0-9][a-z0-9_-]*$
+          minLength: 1
+          maxLength: 64
+          description: A unique identifier for this request within the batch. Must be lowercase alphanumeric and can include hyphens and underscores. Min 1 character, max 64 characters.
+        params:
           type: object
+          description: The request parameters (same fields as a Responses API request body).
           additionalProperties: true
+      additionalProperties: false
+    ResponseInputTextPart:
+      type: object
+      required:
+      - type
+      - text
+      properties:
+        type:
+          type: string
+          enum:
+          - input_text
+        text:
+          type: string
+      additionalProperties: false
+    ResponseUsageDetails:
+      type: object
+      required:
+      - cached_tokens
+      - reasoning_tokens
+      properties:
+        cached_tokens:
+          type: integer
+        reasoning_tokens:
+          type: integer
       additionalProperties: false
     ResponseUsage:
       type: object
@@ -613,6 +549,17 @@ components:
         completion_tokens:
           type: integer
       additionalProperties: false
+    ResponseInputObject:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ResponseInputMessage'
+      additionalProperties: false
     ResponseTextFormat:
       type: object
       required:
@@ -623,13 +570,66 @@ components:
           enum:
           - text
       additionalProperties: false
-    ErrorResponse:
+    ResponseInput:
+      description: Text input, plus image input (input_image) on multimodal models. Audio, files, and item references are not currently supported.
+      oneOf:
+      - type: string
+        minLength: 1
+      - type: array
+        minItems: 1
+        items:
+          $ref: '#/components/schemas/ResponseInputMessage'
+      - $ref: '#/components/schemas/ResponseInputObject'
+    ResponseTextConfiguration:
       type: object
       required:
-      - error
+      - format
       properties:
-        error:
-          $ref: '#/components/schemas/ErrorObject'
+        format:
+          oneOf:
+          - $ref: '#/components/schemas/ResponseTextFormat'
+          - $ref: '#/components/schemas/ResponseJsonSchemaFormat'
+      additionalProperties: false
+    ResponseJsonSchemaFormat:
+      type: object
+      required:
+      - type
+      - name
+      properties:
+        type:
+          type: string
+          enum:
+          - json_schema
+        name:
+          type: string
+        description:
+          type: string
+        schema:
+          type: object
+          additionalProperties: true
+        strict:
+          type: boolean
+      additionalProperties: false
+    ResponseInputImagePart:
+      type: object
+      description: Image content part. Image input is supported only on multimodal models; see the Models page.
+      required:
+      - type
+      - image_url
+      properties:
+        type:
+          type: string
+          enum:
+          - input_image
+        image_url:
+          type: string
+          description: Public http(s) URL or a base64 data URI (data:<media-type>;base64,<data>).
+        detail:
+          type: string
+          enum:
+          - auto
+          - low
+          - high
       additionalProperties: false
   parameters:
     IdempotencyKey:
