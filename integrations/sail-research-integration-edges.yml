@@ -1,4 +1,34 @@
 edges:
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@sailresearch/sdk
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@sailresearch/sdk'
+      version: 0.14.0
+      released: '2026-10-15'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@sailresearch/sdk
+      repo_leg: domain:sailresearch.com
+      publisher_leg: org:sailresearch
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 - partner_name: OpenRouter
   partner: openrouter
   partner_match: router
@@ -11,7 +41,7 @@ edges:
   - inference-host
   router_signals:
     inference-host:
-      models: 6
+      models: 8
       router_ids:
       - Sail Research
       tools_share: 1.0
@@ -55,39 +85,35 @@ edges:
     note: 'sail-research declares OpenAI compatibility: ''description: Sail provides OpenAI-compatible Responses
       and Chat Completions endpoints, plus an Anthropic-compatible Messages endpoint. This reference documents '''
     detected_by: sweep-model-routing.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-model-routing.py
   first_seen: '2026-10-13'
-- partner_name: npm registry
-  partner: npm
+- partner_name: Sequoia Capital
+  partner: sequoia-capital
   partner_match: register
   type: register
-  direction: provider-built
-  category: official SDK (JavaScript/TypeScript)
-  evidence: https://www.npmjs.com/package/@sailresearch/sdk
-  channel: package-registry
-  relationship: distribution-channel
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://sequoiacap.com/companies/sail-research
+  category: vc portfolio participation
   contract_reference:
-    register: npm registry (public registry JSON)
+    register: Sequoia Capital companies (sequoiacap.com/companies/<slug>, from the site's sitemap.xml)
+    standard: null
     spec_file: null
-    language: JavaScript/TypeScript
-    packages:
-    - name: '@sailresearch/sdk'
-      version: 0.14.0
-      released: '2026-10-15'
-      released_field: modified
-      lapsed: false
-      page: https://www.npmjs.com/package/@sailresearch/sdk
-      repo_leg: domain:sailresearch.com
-      publisher_leg: org:sailresearch
-      matched_by: domain
-    current: true
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
-  detected_by: sweep-official-sdks.py
-  first_seen: '2026-10-18'
+    role: vc-portfolio-company
+    registered_name: Sail Research
+    register_id: https://sequoiacap.com/companies/sail-research
+    register_country: null
+    register_website: https://sailresearch.com
+    matched_domain: sailresearch.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
 generated: '2026-10-13'
 method: searched
 checked:
@@ -100,11 +126,17 @@ checked:
 - https://registry.npmjs.org
 - https://repo1.maven.org/maven2
 - https://rubygems.org/api/v1
+- https://a16z.com/portfolio/
+- https://www.battery.com/company/
+- https://www.battery.com/wp-admin/admin-ajax.php
+- https://www.indexventures.com/companies/
+- https://www.sequoiacap.com/our-companies/
+- https://www.sequoiacap.com/sitemap.xml
 source:
-- https://api.nuget.org/v3
-- https://crates.io/api/v1
-- https://proxy.golang.org
-- https://pypi.org/pypi
 - https://registry.npmjs.org
-- https://repo1.maven.org/maven2
+- https://pypi.org/pypi
 - https://rubygems.org/api/v1
+- https://crates.io/api/v1
+- https://repo1.maven.org/maven2
+- https://api.nuget.org/v3
+- https://proxy.golang.org
