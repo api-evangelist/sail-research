@@ -64,6 +64,135 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sail Research is a company surfaced as a portfolio company of kleiner-perkins and added to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.
+Sail Research provides infrastructure for long-horizon agents: cost-efficient inference for leading open-source models (GLM, DeepSeek, Kimi, Nemotron and others) run on demand. Its API is OpenAI- and Anthropic-compatible (Chat Completions, Responses, Messages, Batches), so existing clients migrate by changing the base URL and key. Completion windows (asap/priority/standard/flex) trade latency for lower per-token price for background and agentic workloads, and Sailboxes provide full persistent VMs for long-running agents. Sail raised $80M and is backed by Kleiner Perkins. This profile was enriched by the API Evangelist pipeline from Sail's public OpenAPI, docs, SDKs, CLI, and MCP surface.
 
-Backed by: kleiner-perkins
+**Areas:** Company · Artificial Intelligence · LLM · Inference · Agents · Machine Learning · Developer Tools · Open Source Models · Infrastructure
+
+## Sail Research on APIs.io
+
+Everything profiled for Sail Research is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sail-research/](https://apis.io/providers/sail-research/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Sail Research Batches API](https://apis.io/apis/sail-research/sail-research-batches-api-api/) — Submit and manage batches of requests.
+- [Sail Research Chat Completions API](https://apis.io/apis/sail-research/sail-research-chat-completions-api-api/) — OpenAI-compatible Chat Completions API endpoints.
+- [Sail Research Messages API](https://apis.io/apis/sail-research/sail-research-messages-api-api/) — Anthropic-compatible Messages API endpoints.
+- [Sail Research Models API](https://apis.io/apis/sail-research/sail-research-models-api-api/) — Model discovery endpoints.
+- [Sail Research Responses API](https://apis.io/apis/sail-research/sail-research-responses-api-api/) — OpenAI-compatible Responses API endpoints.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Sail Research Webhooks](https://apis.io/asyncapis/sail-research/sail-research-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [sail-docs](https://apis.io/servers/sail-research/sail-docs/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Sail Batches API API](https://apis.io/collections/sail-research/open-sail-research-batches-api-api/)
+- [Sail Batches API Chat Completions API API](https://apis.io/collections/sail-research/open-sail-research-chat-completions-api-api/)
+- [Sail Batches API Messages API API](https://apis.io/collections/sail-research/open-sail-research-messages-api-api/)
+- [Sail Batches API Models API API](https://apis.io/collections/sail-research/open-sail-research-models-api-api/)
+- [Sail Batches API Responses API API](https://apis.io/collections/sail-research/open-sail-research-responses-api-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Sail Research Openapi Overlay](https://apis.io/overlays/sail-research/sail-research-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sail Research Authentication](https://apis.io/security/sail-research/sail-research-authentication/)
+- [Sail Research Domain Security](https://apis.io/security/sail-research/sail-research-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Sail Research Plans Pricing](https://apis.io/plans/sail-research/sail-research-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.sailresearch.com/)
+- [Documentation](https://docs.sailresearch.com)
+- [Getting started](https://docs.sailresearch.com/quickstart)
+- [API reference](https://docs.sailresearch.com/api-reference/chat-completions-api/create-a-chat-completion)
+- [Pricing](https://docs.sailresearch.com/pricing)
+- [Sign up](https://app.sailresearch.com)
+- [Blog](https://www.sailresearch.com/blog)
+- [Trust centre](https://trust.sailresearch.com)
+- [Terms of service](https://www.sailresearch.com/terms)
+- [Privacy policy](https://www.sailresearch.com/privacy)
+- [GitHub](https://github.com/sailresearch)
+- [Status](https://status.sailresearch.com)
+
+## API Evangelist rating
+
+**Kin Score 53.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.7 |
+| Contract quality | 57.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 68.5 |
+| Access clarity | 76.3 |
+
+**Agent readiness 42.9** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sail-research/](https://apis.io/providers/sail-research/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sail Research: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sail-research/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
